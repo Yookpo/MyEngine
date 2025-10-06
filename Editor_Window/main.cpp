@@ -4,6 +4,10 @@
 #include "framework.h"
 #include "Editor_Window.h"
 
+#include "..\\MyEngine_SOURCE\DiApplication.h"
+
+Application app;
+
 #define MAX_LOADSTRING 100
 POINT g_mousePos = { -100,-100 };	// 전역 변수로 마우스 위치 저장
 
@@ -27,6 +31,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램의 인스턴스 
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
 	// TODO: 여기에 코드를 입력합니다.
+	app.test();
+	//
+	//
+	//
 
 	// 전역 문자열을 초기화합니다.
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -43,15 +51,45 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 프로그램의 인스턴스 
 
 	MSG msg;
 
-	// 기본 메시지 루프입니다:
-	while (GetMessage(&msg, nullptr, 0, 0))
+	// GetMessage(&msg, nullptr, 0, 0)
+	// 프로세스에서 발생한 메세지를 메세지 큐에서 가져오는 함수
+	// 메세지큐에 아무것도 없다면??? 아무 메세지도 가져오지 않게 된다.
+	// 메시지 큐에 처리할 메시지가 들어올 때까지 함수에서 빠져나오지 않고 기다립니다.
+
+	// PeekMessage : 메세지큐에 메세지 유무에 상관없이 함수가 리턴된다.
+	//				 리턴 값이 true 인 경우 메세지가 있고 false인 경우는 메세지가 없다라고 가르켜준다.
+
+	while (true)
 	{
-		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		// 게임 루프
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+			if (msg.message == WM_QUIT)
+				break;
+
+			if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+		}
+		else
+		{
+			// 메세지가 없을 경우 여기서 처리
+			// 게임 로직이 들어가면 된다.
 		}
 	}
+
+
+	//// 기본 메시지 루프입니다:
+	//while (GetMessage(&msg, nullptr, 0, 0))
+	//{
+	//	if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+	//	{
+	//		TranslateMessage(&msg);
+	//		DispatchMessage(&msg);
+	//	}
+	//}
 
 	return (int)msg.wParam;
 }
