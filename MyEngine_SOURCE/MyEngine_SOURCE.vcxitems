@@ -18,10 +18,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DiApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)DiApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiTime.cpp" />
   </ItemGroup>
 </Project>

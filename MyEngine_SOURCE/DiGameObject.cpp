@@ -1,5 +1,6 @@
 #include "DiGameObject.h"
-#include "DiInput.h"
+#include "DiInput.h" 
+#include "DiTime.h"
 
 namespace My
 {
@@ -13,24 +14,26 @@ namespace My
 
 	void GameObject::Update()
 	{
+		const int speed = 100.0f;
+
 		if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
 		{
-			mX -= 0.01f;
+			mX -= speed * Time::DeltaTime();
 		}
 
 		if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
 		{
-			mX += 0.01f;
+			mX += speed * Time::DeltaTime();
 		}
 
 		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 		{
-			mY -= 0.01f;
+			mY -= speed * Time::DeltaTime();
 		}
 
 		if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 		{
-			mY += 0.01f;
+			mY += speed * Time::DeltaTime();
 		}
 	}
 
