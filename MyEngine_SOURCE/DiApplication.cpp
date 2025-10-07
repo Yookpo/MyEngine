@@ -1,4 +1,5 @@
 #include "DiApplication.h"
+#include "DiInput.h"
 
 namespace My
 {
@@ -19,6 +20,7 @@ namespace My
 		mHdc = GetDC(hwnd);
 
 		mPlayer.SetPosition(0.0f, 0.0f);
+		Input::Initialize();
 	}
 
 	void Application::Run()
@@ -30,6 +32,8 @@ namespace My
 
 	void Application::Update()
 	{
+		Input::Update();
+
 		mPlayer.Update();
 	}
 
