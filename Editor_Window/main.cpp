@@ -9,7 +9,6 @@
 My::Application application;
 
 #define MAX_LOADSTRING 100
-POINT g_mousePos = { -100,-100 };	// 전역 변수로 마우스 위치 저장
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -182,14 +181,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 
-	case WM_LBUTTONDOWN:
-	{
-		g_mousePos.x = LOWORD(lParam);
-		g_mousePos.y = HIWORD(lParam);
-		InvalidateRect(hWnd, NULL, TRUE);	// 화면을 갱신하도록 요청
-		break;
-	}
-
 	case WM_PAINT:
 	{
 		// DC란 화면에 출력에 필요한 모든 정보를 가지는 데이터 구조체 이며
@@ -199,8 +190,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
-
-		
 
 		EndPaint(hWnd, &ps);
 	}
