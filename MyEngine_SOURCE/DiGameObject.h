@@ -15,8 +15,8 @@ namespace My
 
 		void SetPosition(float x, float y);
 
-		float GetPositionX() { return mX; }
-		float GetPositionY() { return mY; }
+		float GetPositionX() const { return mX; }
+		float GetPositionY() const { return mY; }
 
 
 

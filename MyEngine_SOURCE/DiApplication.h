@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 #include "DiGameObject.h"
-
+#include "DIBullet.h"
 
 namespace My
 {
@@ -30,5 +30,7 @@ namespace My
 
 		// 플레이어
 		GameObject mPlayer;
+
+		std::vector<Bullet> mBullets;
 	};
 }

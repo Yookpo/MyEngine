@@ -39,7 +39,7 @@ namespace My
 		// 백버퍼를 가르킬 DC생성
 		mBackHdc = CreateCompatibleDC(mHdc);
 
-		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
 		DeleteObject(oldBitmap);
 
 		mPlayer.SetPosition(0.0f, 0.0f);
@@ -61,6 +61,30 @@ namespace My
 		Time::Update();
 
 		mPlayer.Update();
+
+		if (Input::GetKeyDown(eKeyCode::Space))
+		{
+			Bullet newBullet;
+
+			float playerCenterX = mPlayer.GetPositionX() + 200.0f;
+			float playerTopY = mPlayer.GetPositionY() + 150.0f;
+
+			newBullet.SetPosition(playerCenterX, playerTopY);
+			mBullets.push_back(newBullet);
+		}
+
+		for (Bullet& bullet : mBullets)
+		{
+			bullet.Update();
+		}
+
+		mBullets.erase(
+			std::remove_if(mBullets.begin(), mBullets.end(),
+				[](const Bullet& bullet) {
+					return bullet.GetPositionY() < 0;
+				}),
+			mBullets.end()
+		);
 	}
 
 	void Application::LateUpdate()
@@ -74,6 +98,11 @@ namespace My
 
 		Time::Render(mBackHdc);
 		mPlayer.Render(mBackHdc);
+
+		for (Bullet& bullet : mBullets)
+		{
+			bullet.Render(mBackHdc);
+		}
 
 		// BackBuffer에 있는걸 원본 Buffer에 복사(그리기)
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
