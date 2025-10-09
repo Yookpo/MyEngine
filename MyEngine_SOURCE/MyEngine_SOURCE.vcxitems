@@ -16,14 +16,20 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)DiApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiTime.cpp" />
   </ItemGroup>
 </Project>

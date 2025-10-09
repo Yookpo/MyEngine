@@ -128,6 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DiLoadScene.h" />
+    <ClInclude Include="DiPlayScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DiPlayScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

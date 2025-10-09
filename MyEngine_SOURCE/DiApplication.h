@@ -14,11 +14,13 @@ namespace My
 		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Run();
 
-		void Update();
+		void Update();                                            
 		void LateUpdate();
 		void Render();
 
 	private:
+		void clearRenderTarget();
+		void copyRenderTarget(HDC source, HDC dest);
 		void adjustWindowRect(HWND hwnd, UINT width, UINT height);
 		void createBuffer(UINT width, UINT height);
 		void initializeEtc();
@@ -33,7 +35,7 @@ namespace My
 		UINT mWidth;
 		UINT mHeight;
 
-		// 플레이어
-		GameObject mPlayer;
+		//std::vector<Scene*> mScenes;
+		//std::vector<GameObject*> mGameObjects;
 	};
 }

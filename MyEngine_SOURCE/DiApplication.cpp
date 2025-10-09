@@ -1,6 +1,7 @@
 ﻿#include "DiApplication.h"
 #include "DiInput.h"
 #include "DiTime.h"
+#include "DiSceneManager.h"
 
 namespace My
 {
@@ -25,7 +26,7 @@ namespace My
 		createBuffer(width, height);
 		initializeEtc();
 
-		mPlayer.SetPosition(0.0f, 0.0f);
+		SceneManager::Initialize();
 	}
 
 	void Application::Run()
@@ -40,7 +41,7 @@ namespace My
 		Input::Update();
 		Time::Update();
 
-		mPlayer.Update();
+		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
@@ -50,13 +51,24 @@ namespace My
 
 	void Application::Render()
 	{
-		Rectangle(mBackHdc, 0, 0, mWidth, mHeight);
+		clearRenderTarget();
 
 		Time::Render(mBackHdc);
-		mPlayer.Render(mBackHdc);
+		SceneManager::Render(mBackHdc);
+		
+		copyRenderTarget(mBackHdc, mHdc);
+	}
 
+	void Application::clearRenderTarget()
+	{
+		// clear
+		Rectangle(mBackHdc, -1, -1, mWidth + 1, mHeight + 1);
+	}
+
+	void Application::copyRenderTarget(HDC source, HDC dest)
+	{
 		// BackBuffer에 있는걸 원본 Buffer에 복사(그리기)
-		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
+		BitBlt(dest, 0, 0, mWidth, mHeight, source, 0, 0, SRCCOPY);
 	}
 
 	void Application::adjustWindowRect(HWND hwnd, UINT width, UINT height)
