@@ -1,4 +1,4 @@
-#include "DiGameObject.h"
+ï»¿#include "DiGameObject.h"
 #include "DiInput.h" 
 #include "DiTime.h"
 
@@ -44,10 +44,10 @@ namespace My
 
 	void GameObject::Render(HDC hdc)
 	{
-		// ÆÄ¶û ºê·¯½¬ »ı¼º
+		// íŒŒë‘ ë¸ŒëŸ¬ì‰¬ ìƒì„±
 		HBRUSH blueBrush = CreateSolidBrush(RGB(0, 0, 255));
 
-		// ÆÄ¶û ºê·¯½¬ DC¿¡ ¼±ÅÃ ±×¸®°í Èò»ö ºê·¯½¬ ¹İÈ¯ (±âÁ¸ DC¿¡ µî·ÏµÇ¾îÀÖ´Â GDI ¿ÀºêÁ§Æ®)
+		// íŒŒë‘ ë¸ŒëŸ¬ì‰¬ DCì— ì„ íƒ ê·¸ë¦¬ê³  í°ìƒ‰ ë¸ŒëŸ¬ì‰¬ ë°˜í™˜ (ê¸°ì¡´ DCì— ë“±ë¡ë˜ì–´ìˆëŠ” GDI ì˜¤ë¸Œì íŠ¸)
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blueBrush);
 
 		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));

@@ -1,4 +1,4 @@
-#include "DiApplication.h"
+ï»¿#include "DiApplication.h"
 #include "DiInput.h"
 #include "DiTime.h"
 
@@ -21,31 +21,11 @@ namespace My
 
 	void Application::Initialize(HWND hwnd, UINT width, UINT height)
 	{
-		mHwnd = hwnd;
-		mHdc = GetDC(hwnd);
-
-		RECT rect = { 0,0,width,height };
-		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
-
-		mWidth = rect.right - rect.left;
-		mHeight = rect.bottom - rect.top;
-
-		SetWindowPos(mHwnd, nullptr, 0, 0, rect.right - rect.left, rect.bottom - rect.top, 0);
-		ShowWindow(mHwnd, true);
-
-		//À©µµ¿ì ÇØ»óµµ¿¡ ¸Â´Â ¹é¹öÆÛ(µµÈ­Áö) »ı¼º
-		mBackBitmap = CreateCompatibleBitmap(mHdc, width, height);
-
-		// ¹é¹öÆÛ¸¦ °¡¸£Å³ DC»ı¼º
-		mBackHdc = CreateCompatibleDC(mHdc);
-
-		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
-		DeleteObject(oldBitmap);
+		adjustWindowRect(hwnd, width, height);
+		createBuffer(width, height);
+		initializeEtc();
 
 		mPlayer.SetPosition(0.0f, 0.0f);
-
-		Input::Initialize();
-		Time::Initialize();
 	}
 
 	void Application::Run()
@@ -75,8 +55,41 @@ namespace My
 		Time::Render(mBackHdc);
 		mPlayer.Render(mBackHdc);
 
-		// BackBuffer¿¡ ÀÖ´Â°É ¿øº» Buffer¿¡ º¹»ç(±×¸®±â)
+		// BackBufferì— ìˆëŠ”ê±¸ ì›ë³¸ Bufferì— ë³µì‚¬(ê·¸ë¦¬ê¸°)
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
+	}
+
+	void Application::adjustWindowRect(HWND hwnd, UINT width, UINT height)
+	{
+		mHwnd = hwnd;
+		mHdc = GetDC(hwnd);
+
+		RECT rect = { 0,0,width,height };
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+		mWidth = rect.right - rect.left;
+		mHeight = rect.bottom - rect.top;
+
+		SetWindowPos(mHwnd, nullptr, 0, 0, rect.right - rect.left, rect.bottom - rect.top, 0);
+		ShowWindow(mHwnd, true);
+	}
+
+	void Application::createBuffer(UINT width, UINT height)
+	{
+		//ìœˆë„ìš° í•´ìƒë„ì— ë§ëŠ” ë°±ë²„í¼(ë„í™”ì§€) ìƒì„±
+		mBackBitmap = CreateCompatibleBitmap(mHdc, width, height);
+
+		// ë°±ë²„í¼ë¥¼ ê°€ë¥´í‚¬ DCìƒì„±
+		mBackHdc = CreateCompatibleDC(mHdc);
+
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
+		DeleteObject(oldBitmap);
+	}
+
+	void Application::initializeEtc()
+	{
+		Input::Initialize();
+		Time::Initialize();
 	}
 }
 

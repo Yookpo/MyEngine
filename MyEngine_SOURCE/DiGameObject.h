@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "CommonInclude.h"
 
 namespace My
@@ -21,7 +21,7 @@ namespace My
 
 
 	private:
-		// °ÔÀÓ¿ÀºêÁ§Æ®ÀÇ ÁÂÇ¥
+		// ê²Œì„ì˜¤ë¸Œì íŠ¸ì˜ ì¢Œí‘œ
 		float mX;
 		float mY;
 	};
