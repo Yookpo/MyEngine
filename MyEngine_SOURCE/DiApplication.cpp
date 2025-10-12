@@ -38,7 +38,7 @@ namespace My
 
 	void Application::Update()
 	{
-		Input::Update();
+ 		Input::Update();
 		Time::Update();
 
 		SceneManager::Update();

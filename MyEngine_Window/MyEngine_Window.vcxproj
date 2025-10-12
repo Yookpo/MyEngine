@@ -129,9 +129,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DiLoadScene.h" />
+    <ClInclude Include="DiPlayer.h" />
     <ClInclude Include="DiPlayScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DiPlayer.cpp" />
     <ClCompile Include="DiPlayScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

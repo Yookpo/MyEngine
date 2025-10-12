@@ -5,67 +5,47 @@
 namespace My
 {
 	GameObject::GameObject()
-		: mX(0.0f), mY(0.0f)
 	{
 	}
 
 	GameObject::~GameObject()
 	{
+		for (Component* comp : mComponents)
+		{
+			delete comp;
+			comp = nullptr;
+		}
+	}
+
+	void GameObject::Initialize()
+	{
+		for (Component* comp : mComponents)
+		{
+			comp->Initialize();
+		}
 	}
 
 	void GameObject::Update()
 	{
-		const int speed = 100.0f;
-
-		if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
+		for (Component* comp : mComponents)
 		{
-			mX -= speed * Time::DeltaTime();
-		}
-
-		if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
-		{
-			mX += speed * Time::DeltaTime();
-		}
-
-		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
-		{
-			mY -= speed * Time::DeltaTime();
-		}
-
-		if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
-		{
-			mY += speed * Time::DeltaTime();
+			comp->Update();
 		}
 	}
 
 	void GameObject::LateUpdate()
 	{
-
+		for (Component* comp : mComponents)
+		{
+			comp->LateUpdate();
+		}
 	}
 
 	void GameObject::Render(HDC hdc)
 	{
-		// 파랑 브러쉬 생성
-		HBRUSH blueBrush = CreateSolidBrush(RGB(rand() % 255, rand() % 255, rand() % 255));
-
-		// 파랑 브러쉬 DC에 선택 그리고 흰색 브러쉬 반환 (기존 DC에 등록되어있는 GDI 오브젝트)
-		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blueBrush);
-
-		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
-		HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-
-		Ellipse(hdc, mX, mY, 100 + mX, 100 + mY);
-
-		SelectObject(hdc, oldBrush);
-		SelectObject(hdc, oldPen);
-
-		DeleteObject(blueBrush);
-		DeleteObject(redPen);
-	}
-
-	void GameObject::SetPosition(float x, float y)
-	{
-		mX = x;
-		mY = y;
+		for (Component* comp : mComponents)
+		{
+			comp->Render(hdc);
+		}
 	}
 }
