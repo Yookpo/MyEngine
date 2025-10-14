@@ -20,6 +20,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DiEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiSpriteRenderer.h" />
@@ -32,6 +35,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)DiEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiSpriteRenderer.cpp" />

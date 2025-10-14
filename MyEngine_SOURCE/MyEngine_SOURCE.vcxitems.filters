@@ -27,6 +27,11 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)DiSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiTransform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiMath.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiResources.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -58,6 +63,11 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)DiSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiTransform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiMath.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiResources.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">

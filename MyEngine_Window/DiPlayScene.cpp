@@ -16,16 +16,19 @@ namespace My
 	}
 	void PlayScene::Initialize()
 	{
-		Player* p1 = new Player();
-		Transform* tr = p1->AddComponent<Transform>();
-		tr->SetPos(800, 450);
+		{
+			Player* bg = new Player();
 
-		tr->SetName(L"TR");
+			Transform* tr = bg->AddComponent<Transform>();
+			tr->SetPos(Vector2(0.0f, 0.0f));
+			tr->SetName(L"TR");
+			
+			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
+			sr->SetName(L"SR");
+			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CrazyArcade.png");
 
-		SpriteRenderer* sr = p1->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
-
-		AddGameObject(p1);
+			AddGameObject(bg);
+		}
 
 		
 	}
