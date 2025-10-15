@@ -7,6 +7,7 @@
     <ClCompile Include="DiPlayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="DiTitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DiPlayer.h">
@@ -18,6 +19,7 @@
     <ClInclude Include="DiPlayScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="DiTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

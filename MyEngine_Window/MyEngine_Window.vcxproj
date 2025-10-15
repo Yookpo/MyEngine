@@ -131,10 +131,12 @@
     <ClInclude Include="DiLoadScene.h" />
     <ClInclude Include="DiPlayer.h" />
     <ClInclude Include="DiPlayScene.h" />
+    <ClInclude Include="DiTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiPlayer.cpp" />
     <ClCompile Include="DiPlayScene.cpp" />
+    <ClCompile Include="DiTitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
