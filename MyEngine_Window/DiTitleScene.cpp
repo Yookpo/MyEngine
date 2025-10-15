@@ -22,7 +22,7 @@ namespace My
 	{
 		{
 			// 배경 이미지 오브젝트
-			Player* bg = new Player();
+			bg = new Player();
 
 			Transform* tr = bg->AddComponent<Transform>();
 			tr->SetPos(Vector2(0.0f, 0.0f));
@@ -30,7 +30,7 @@ namespace My
 			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CrazyArcade.png");
 
-			AddGameObject(bg);
+			AddGameObject(bg, eLayerType::BackGround);
 		}
 
 	}
@@ -57,6 +57,16 @@ namespace My
 
 		wchar_t str[50] = L"Title Scene";
 		TextOut(hdc, 0, 0, str, 11);
+	}
+
+	void TitleScene::OnEnter()
+	{
+	}
+
+	void TitleScene::OnExit()
+	{
+		Transform* tr = bg->GetComponent<Transform>();
+		tr->SetPos(Vector2(0.0f, 0.0f));
 	}
 
 }

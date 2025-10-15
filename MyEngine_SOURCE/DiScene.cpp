@@ -3,8 +3,13 @@
 namespace My
 {
 	Scene::Scene()
-		: mGameObjects{}
+		: mLayers{}
 	{
+		mLayers.resize((UINT)eLayerType::Max);
+		for (size_t i = 0; i < mLayers.size(); i++)
+		{
+			mLayers[i] = new Layer();
+		}
 	}
 
 	Scene::~Scene()
@@ -13,36 +18,45 @@ namespace My
 
 	void Scene::Initialize()
 	{
+		for (auto layer : mLayers)
+		{
+			if (!layer) continue;
+			layer->Initialize();
+		}
 	}
 
 	void Scene::Update()
 	{
-		for (auto gameObj : mGameObjects)
+		for (auto layer : mLayers)
 		{
-			gameObj->Update();
+			if (!layer) continue;
+			layer->Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
-		for (auto gameObj : mGameObjects)
+		for (auto layer : mLayers)
 		{
-			gameObj->LateUpdate();
+			if (!layer) continue;
+			layer->LateUpdate();
 		}
 	}
 
 	void Scene::Render(HDC hdc)
 	{
-		for (auto gameObj : mGameObjects)
+		for (auto layer : mLayers)
 		{
-			gameObj->Render(hdc);
+			if (!layer) continue;
+			layer->Render(hdc);
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* gameObj)
+	void Scene::AddGameObject(GameObject* gameObj, const eLayerType type)
 	{
-		mGameObjects.push_back(gameObj);
+		mLayers[(UINT)type]->AddGameObject(gameObj);
 	}
+
 
 	void Scene::OnEnter() {}
 	void Scene::OnExit() {}

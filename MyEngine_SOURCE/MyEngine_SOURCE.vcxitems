@@ -18,8 +18,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DiApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiResources.h" />
@@ -35,6 +37,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)DiEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DiLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DiResources.cpp" />

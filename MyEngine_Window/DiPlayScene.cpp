@@ -30,7 +30,20 @@ namespace My
 			sr->SetName(L"SR");
 			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CloudOcean.png");
 
-			AddGameObject(bg);
+
+			Player* bz = new Player();
+
+			Transform* tr1 = bz->AddComponent<Transform>();
+			tr1->SetPos(Vector2(20.0f, 20.0f));
+			tr1->SetName(L"TR");
+
+			SpriteRenderer* sr1 = bz->AddComponent<SpriteRenderer>();
+			sr1->SetName(L"SR");
+			sr1->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\baezzi.png");
+
+
+			AddGameObject(bz, eLayerType::Player);
+			AddGameObject(bg, eLayerType::BackGround);
 		}
 
 		
