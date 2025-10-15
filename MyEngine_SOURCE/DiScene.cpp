@@ -43,4 +43,8 @@ namespace My
 	{
 		mGameObjects.push_back(gameObj);
 	}
+
+	void Scene::OnEnter() {}
+	void Scene::OnExit() {}
+
 }

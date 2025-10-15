@@ -3,6 +3,9 @@
 #include "DiPlayer.h"
 #include "DiTransform.h"
 #include "DiSpriteRenderer.h"
+#include "DiInput.h"
+#include "DiTitleScene.h"
+#include "DiSceneManager.h"
 
 namespace My
 {
@@ -17,7 +20,7 @@ namespace My
 	void PlayScene::Initialize()
 	{
 		{
-			Player* bg = new Player();
+			bg = new Player();
 
 			Transform* tr = bg->AddComponent<Transform>();
 			tr->SetPos(Vector2(0.0f, 0.0f));
@@ -25,7 +28,7 @@ namespace My
 			
 			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 			sr->SetName(L"SR");
-			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CrazyArcade.png");
+			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CloudOcean.png");
 
 			AddGameObject(bg);
 		}
@@ -35,13 +38,31 @@ namespace My
 	void PlayScene::Update()
 	{
 		Scene::Update();
+
+		
 	}
 	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			SceneManager::LoadScene(L"TitleScene");
+		}
 	}
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+
+		wchar_t str[50] = L"Play Scene";
+		TextOut(hdc, 0, 0, str, 10);
+	}
+	void PlayScene::OnEnter()
+	{
+	}
+	void PlayScene::OnExit()
+	{
+		Transform* tr = bg->GetComponent<Transform>();
+		tr->SetPos(Vector2(0.0f, 0.0f));
 	}
 }

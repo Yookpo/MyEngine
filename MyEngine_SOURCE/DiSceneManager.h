@@ -20,11 +20,16 @@ namespace My
 
 		static Scene* LoadScene(const std::wstring& name)
 		{
+			if(mActiveScene)
+				mActiveScene->OnExit();
+
 			auto iter = mScene.find(name);
 			if (iter != mScene.end())
 			{
 				mActiveScene = iter->second;
+				mActiveScene->OnEnter();
 			}
+
 			return mActiveScene;
 		}
 

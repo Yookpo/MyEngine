@@ -15,6 +15,9 @@ namespace My
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
+		virtual void OnEnter();
+		virtual void OnExit();
+
 		void AddGameObject(GameObject* gameObj);
 
 	private:
