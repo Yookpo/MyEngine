@@ -5,11 +5,7 @@ namespace My
 	Scene::Scene()
 		: mLayers{}
 	{
-		mLayers.resize((UINT)eLayerType::Max);
-		for (size_t i = 0; i < mLayers.size(); i++)
-		{
-			mLayers[i] = new Layer();
-		}
+		createLayers();
 	}
 
 	Scene::~Scene()
@@ -52,11 +48,19 @@ namespace My
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* gameObj, const eLayerType type)
+	void Scene::AddGameObject(GameObject* gameObj, const  enums::eLayerType type)
 	{
 		mLayers[(UINT)type]->AddGameObject(gameObj);
 	}
 
+	void Scene::createLayers()
+	{
+		mLayers.resize((UINT)enums::eLayerType::Max);
+		for (size_t i = 0; i < mLayers.size(); i++)
+		{
+			mLayers[i] = new Layer();
+		}
+	}
 
 	void Scene::OnEnter() {}
 	void Scene::OnExit() {}

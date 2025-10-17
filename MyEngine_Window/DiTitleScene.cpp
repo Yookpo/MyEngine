@@ -25,12 +25,12 @@ namespace My
 			bg = new Player();
 
 			Transform* tr = bg->AddComponent<Transform>();
-			tr->SetPos(Vector2(0.0f, 0.0f));
+			tr->SetPosition(Vector2(0.0f, 0.0f));
 
 			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CrazyArcade.png");
 
-			AddGameObject(bg, eLayerType::BackGround);
+			AddGameObject(bg, enums::eLayerType::BackGround);
 		}
 
 	}
@@ -66,7 +66,7 @@ namespace My
 	void TitleScene::OnExit()
 	{
 		Transform* tr = bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(0.0f, 0.0f));
+		tr->SetPosition(Vector2(0.0f, 0.0f));
 	}
 
 }

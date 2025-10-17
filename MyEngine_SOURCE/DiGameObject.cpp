@@ -1,11 +1,13 @@
 ﻿#include "DiGameObject.h"
 #include "DiInput.h" 
 #include "DiTime.h"
+#include "DiTransform.h"
 
 namespace My
 {
 	GameObject::GameObject()
 	{
+		initializeTransform();
 	}
 
 	GameObject::~GameObject()
@@ -47,5 +49,10 @@ namespace My
 		{
 			comp->Render(hdc);
 		}
+	}
+
+	void GameObject::initializeTransform()
+	{
+		AddComponent<Transform>();
 	}
 }

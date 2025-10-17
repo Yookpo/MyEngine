@@ -6,6 +6,7 @@
 #include "DiInput.h"
 #include "DiTitleScene.h"
 #include "DiSceneManager.h"
+#include "DiObject.h"
 
 namespace My
 {
@@ -20,12 +21,12 @@ namespace My
 	void PlayScene::Initialize()
 	{
 		{
-			bg = new Player();
+			/*bg = new Player();
 
 			Transform* tr = bg->AddComponent<Transform>();
-			tr->SetPos(Vector2(0.0f, 0.0f));
+			tr->SetPosition(Vector2(0.0f, 0.0f));
 			tr->SetName(L"TR");
-			
+
 			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 			sr->SetName(L"SR");
 			sr->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\CloudOcean.png");
@@ -34,7 +35,7 @@ namespace My
 			Player* bz = new Player();
 
 			Transform* tr1 = bz->AddComponent<Transform>();
-			tr1->SetPos(Vector2(20.0f, 20.0f));
+			tr1->SetPosition(Vector2(20.0f, 20.0f));
 			tr1->SetName(L"TR");
 
 			SpriteRenderer* sr1 = bz->AddComponent<SpriteRenderer>();
@@ -43,16 +44,24 @@ namespace My
 
 
 			AddGameObject(bz, eLayerType::Player);
-			AddGameObject(bg, eLayerType::BackGround);
+			AddGameObject(bg, eLayerType::BackGround);*/
+
+
+			bg = object::Instantiate<Player>
+				(enums::eLayerType::BackGround, Vector2(100, 100));
+
+			SpriteRenderer* sr1 = bg->AddComponent<SpriteRenderer>();
+			sr1->SetName(L"SR");
+			sr1->ImageLoad(L"C:\\Users\\Diguedman\\source\\repos\\MyEngine\\Resources\\baezzi.png");
 		}
 
-		
+
 	}
 	void PlayScene::Update()
 	{
 		Scene::Update();
 
-		
+
 	}
 	void PlayScene::LateUpdate()
 	{
@@ -75,7 +84,7 @@ namespace My
 	}
 	void PlayScene::OnExit()
 	{
-		Transform* tr = bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(0.0f, 0.0f));
+		//Transform* tr = bg->GetComponent<Transform>();
+		//tr->SetPosition(Vector2(0.0f, 0.0f));
 	}
 }

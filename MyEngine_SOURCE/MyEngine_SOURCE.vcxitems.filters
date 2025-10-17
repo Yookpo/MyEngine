@@ -77,6 +77,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DiLayer.h">
       <Filter>Layer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">

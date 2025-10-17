@@ -5,6 +5,21 @@ namespace My
 	std::map<std::wstring, Scene*> SceneManager::mScene = {};
 	Scene* SceneManager::mActiveScene = nullptr;
 
+	Scene* SceneManager::LoadScene(const std::wstring& name)
+	{
+		if (mActiveScene)
+			mActiveScene->OnExit();
+
+		auto iter = mScene.find(name);
+		if (iter != mScene.end())
+		{
+			mActiveScene = iter->second;
+			mActiveScene->OnEnter();
+		}
+
+		return mActiveScene;
+	}
+
 	void SceneManager::Initialize()
 	{
 	}

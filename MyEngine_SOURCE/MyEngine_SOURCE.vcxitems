@@ -23,6 +23,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DiInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DiObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DiScene.h" />
